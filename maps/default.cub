@@ -1,0 +1,17 @@
+SO ./xpm/pathSO.xpm
+NO ./xpm/pathNO.xpm
+WE ./xpm/pathWE.xpm
+EA ./xpm/pathEA.xpm
+F 255,130,0
+C 0,255,255
+
+
+1111111
+1S00001
+1011111
+1010101
+1010001
+1000001
+1111111
+
+
