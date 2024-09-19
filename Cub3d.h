@@ -6,7 +6,7 @@
 /*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 02:02:24 by akunegel          #+#    #+#             */
-/*   Updated: 2024/09/19 19:08:24 by akunegel         ###   ########.fr       */
+/*   Updated: 2024/09/19 23:51:46 by akunegel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,13 @@ typedef struct s_player
 	char	dir;
 }				t_player;
 
+typedef struct s_i {
+	void *no;
+	void *so;
+	void *we;
+	void *ea;
+}		t_i;
+
 typedef struct s_images {
     void	*img;
     char	*addr;
@@ -110,6 +117,7 @@ typedef struct s_data
 	t_paths		paths;
 	t_textures	t;
 	t_raycasting	r;
+	t_i		images;
 	void		*mlx;
 	void		*mlx_win;
 	int			fd;
@@ -147,5 +155,6 @@ void			init_player(t_player *p);
 void			start_mlx(t_data *data);
 int game_loop(t_data *data);
 void my_mlx_pixel_put(t_images *img, int x, int y, int rgb);
+void	get_images(t_data *data);
 
 #endif
