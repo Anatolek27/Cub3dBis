@@ -36,7 +36,27 @@ int handle_keypress(int keycode, t_data *data)
             data->r.posY -= data->r.dirY * MOVE_SPEED;
     }
 
-    if (keycode == 97)  // Touche A (code Linux)
+    if (keycode == 100)  // A
+    {
+        double moveX = data->r.dirY * MOVE_SPEED;
+        double moveY = -data->r.dirX * MOVE_SPEED;
+        if (data->map.map[(int)(data->r.posX + moveX)][(int)(data->r.posY + moveY)] != '1')
+            data->r.posX += moveX;
+        if (data->map.map[(int)(data->r.posX + moveX)][(int)(data->r.posY + moveY)] != '1')
+            data->r.posY += moveY;
+    }
+
+    if (keycode == 97)  // D
+    {
+        double moveX = -data->r.dirY * MOVE_SPEED;
+        double moveY = data->r.dirX * MOVE_SPEED;
+        if (data->map.map[(int)(data->r.posX + moveX)][(int)(data->r.posY + moveY)] != '1')
+            data->r.posX += moveX;
+        if (data->map.map[(int)(data->r.posX + moveX)][(int)(data->r.posY + moveY)] != '1')
+            data->r.posY += moveY;
+    }
+
+    if (keycode == 65361)  // Touche A (code Linux)
     {
         double oldDirX = data->r.dirX;
         data->r.dirX = data->r.dirX * cos(ROT_SPEED) - data->r.dirY * sin(ROT_SPEED);
@@ -46,7 +66,7 @@ int handle_keypress(int keycode, t_data *data)
         data->r.planeY = oldPlaneX * sin(ROT_SPEED) + data->r.planeY * cos(ROT_SPEED);
     }
 
-    if (keycode == 100)  // Touche D (code Linux)
+    if (keycode == 65363)  // Touche D (code Linux)
     {
         double oldDirX = data->r.dirX;
         data->r.dirX = data->r.dirX * cos(-ROT_SPEED) - data->r.dirY * sin(-ROT_SPEED);
@@ -55,7 +75,6 @@ int handle_keypress(int keycode, t_data *data)
         data->r.planeX = data->r.planeX * cos(-ROT_SPEED) - data->r.planeY * sin(-ROT_SPEED);
         data->r.planeY = oldPlaneX * sin(-ROT_SPEED) + data->r.planeY * cos(-ROT_SPEED);
     }
-
     return (0);
 }
 
@@ -64,8 +83,8 @@ void init_mlx(t_data *data)
 	data->mlx = mlx_init();
 	data->r.dirX = -1;
 	data->r.dirY = 0;
-	data->r.planeX = 0;
-	data->r.planeY = 0.66;
+	data->r.planeX = -0.66;
+	data->r.planeY = 0;
 	data->r.fov = 0.66;
 }
 
@@ -74,12 +93,8 @@ void start_mlx(t_data *data)
     // Initialisation de MLX
     init_mlx(data);
     data->mlx_win = mlx_new_window(data->mlx, 1280, 1024, "Cub3d");
-    // Capture de la fermeture de la fenêtre
     mlx_hook(data->mlx_win, 17, 0, ft_close, data);
-
-    // Capture de la touche ESC
     mlx_hook(data->mlx_win, 2, 1L<<0, handle_keypress, data);
-    // Boucle principale : ajouter le hook de boucle de jeu avant mlx_loop
     mlx_loop_hook(data->mlx, game_loop, data);
 
     // Boucle MLX

@@ -6,7 +6,7 @@
 /*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 02:02:55 by akunegel          #+#    #+#             */
-/*   Updated: 2024/09/19 01:16:27 by akunegel         ###   ########.fr       */
+/*   Updated: 2024/09/19 17:26:00 by akunegel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,5 @@ int	ft_exit(t_data *data, char *err)
 	free_map(data);
 	free_tmp(data);
 	free_paths(data);
-	return (0);
+	exit (0);
 }

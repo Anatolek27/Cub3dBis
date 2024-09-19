@@ -6,7 +6,7 @@
 /*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 02:02:24 by akunegel          #+#    #+#             */
-/*   Updated: 2024/09/19 03:06:43 by akunegel         ###   ########.fr       */
+/*   Updated: 2024/09/19 19:08:24 by akunegel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,22 @@ typedef struct s_raycasting
 	double planeX;
 	double planeY;
 	double fov;
+	double	cameraX;
+	double	rayDirX;
+	double 	rayDirY;
+	int mapX;
+	int mapY;
+	int hit;
+	int side;
+	double deltaDistX;
+	double deltaDistY;
+	double perpWallDist;
+	int	lineHeight;
+	int drawStart;
+	int drawEnd;
+	int color;
+    double sideDistX;
+	double sideDistY;
 }				t_raycasting;
 
 typedef struct s_player
