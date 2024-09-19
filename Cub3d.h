@@ -6,7 +6,7 @@
 /*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 02:02:24 by akunegel          #+#    #+#             */
-/*   Updated: 2024/09/19 01:52:31 by akunegel         ###   ########.fr       */
+/*   Updated: 2024/09/19 03:06:43 by akunegel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,21 @@
 # include "includes/gnl/get_next_line.h"
 # include "mlx.h"
 
-# define FOV 60						// FOV
-# define T_SIZE 10					// tile size
-# define P_HEIGHT 5					// Camera position
-# define WIN_WIDTH 1024				// windows width
-# define WIN_HEIGHT 512				// windows height
-# define SPEED 4					// player speed
-# define RO_SPEED 0.03				// rotation speed
+
+#define MOVE_SPEED 0.1
+#define ROT_SPEED 0.05
+
+
+typedef struct s_raycasting
+{
+	double posX;
+	double posY;
+	double dirX;
+	double dirY;
+	double planeX;
+	double planeY;
+	double fov;
+}				t_raycasting;
 
 typedef struct s_player
 {
@@ -85,6 +93,7 @@ typedef struct s_data
 	t_map		map;
 	t_paths		paths;
 	t_textures	t;
+	t_raycasting	r;
 	void		*mlx;
 	void		*mlx_win;
 	int			fd;
@@ -121,5 +130,6 @@ void			check_map_playable(t_data *data, int x, int y);
 void			init_player(t_player *p);
 void			start_mlx(t_data *data);
 int game_loop(t_data *data);
+void my_mlx_pixel_put(t_images *img, int x, int y, int rgb);
 
 #endif
