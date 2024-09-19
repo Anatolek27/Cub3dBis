@@ -1,8 +1,8 @@
 F 220,100,0
-NO ./xpm/pathNO.xpm
-SO ./xpm/pathSO.xpm
-WE ./xpm/pathWE.xpm
-EA ./xpm/pathEA.xpm
+NO ./shrek.xpm
+SO ./shrek.xpm
+WE ./shrek.xpm
+EA ./shrek.xpm
 C 225,30,0
 1111111111111111111111111
 1000000000000000000000001
