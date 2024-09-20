@@ -6,7 +6,7 @@
 /*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 02:02:55 by akunegel          #+#    #+#             */
-/*   Updated: 2024/09/19 17:26:00 by akunegel         ###   ########.fr       */
+/*   Updated: 2024/09/20 19:31:29 by akunegel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	free_paths(t_data *data)
 		free(data->paths.pe);
 	if (data->t.bc == 1)
 		free(data->t.rgbc);
-	if (data->t.bf == 1)
+	if (data->t.bf == 1)		
 		free(data->t.rgbf);
 }
 

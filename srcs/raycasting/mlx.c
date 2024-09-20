@@ -8,19 +8,19 @@ void my_mlx_pixel_put(t_images *img, int x, int y, int rgb)
         *(unsigned int *)dst = rgb;
     }
 }
-int	ft_close(t_data *data)
+int ft_close(t_data *data)
 {
-	mlx_destroy_window(data->mlx, data->mlx_win);
-	exit(ft_exit(data, "Game closed"));
-	return (0);
+    mlx_destroy_window(data->mlx, data->mlx_win);
+    exit(ft_exit(data, "Game closed"));
+    return (0);
 }
 
 int handle_keypress(int keycode, t_data *data)
 {
-    if (keycode == 65307)  // Touche ESC (code pour Linux)
+    if (keycode == 65307) // Touche ESC (code pour Linux)
         ft_exit(data, "Game closed");
 
-    if (keycode == 119)  // Touche W (code Linux)
+    if (keycode == 119) // Touche W (code Linux)
     {
         if (data->map.map[(int)(data->r.posX + data->r.dirX * MOVE_SPEED)][(int)(data->r.posY)] != '1')
             data->r.posX += data->r.dirX * MOVE_SPEED;
@@ -28,7 +28,7 @@ int handle_keypress(int keycode, t_data *data)
             data->r.posY += data->r.dirY * MOVE_SPEED;
     }
 
-    if (keycode == 115)  // Touche S (code Linux)
+    if (keycode == 115) // Touche S (code Linux)
     {
         if (data->map.map[(int)(data->r.posX - data->r.dirX * MOVE_SPEED)][(int)(data->r.posY)] != '1')
             data->r.posX -= data->r.dirX * MOVE_SPEED;
@@ -36,7 +36,7 @@ int handle_keypress(int keycode, t_data *data)
             data->r.posY -= data->r.dirY * MOVE_SPEED;
     }
 
-    if (keycode == 100)  // A
+    if (keycode == 100) // A
     {
         double moveX = data->r.dirY * MOVE_SPEED;
         double moveY = -data->r.dirX * MOVE_SPEED;
@@ -46,7 +46,7 @@ int handle_keypress(int keycode, t_data *data)
             data->r.posY += moveY;
     }
 
-    if (keycode == 97)  // D
+    if (keycode == 97) // D
     {
         double moveX = -data->r.dirY * MOVE_SPEED;
         double moveY = data->r.dirX * MOVE_SPEED;
@@ -56,7 +56,7 @@ int handle_keypress(int keycode, t_data *data)
             data->r.posY += moveY;
     }
 
-    if (keycode == 65361)  // Touche A (code Linux)
+    if (keycode == 65361) // Touche A (code Linux)
     {
         double oldDirX = data->r.dirX;
         data->r.dirX = data->r.dirX * cos(ROT_SPEED) - data->r.dirY * sin(ROT_SPEED);
@@ -66,7 +66,7 @@ int handle_keypress(int keycode, t_data *data)
         data->r.planeY = oldPlaneX * sin(ROT_SPEED) + data->r.planeY * cos(ROT_SPEED);
     }
 
-    if (keycode == 65363)  // Touche D (code Linux)
+    if (keycode == 65363) // Touche D (code Linux)
     {
         double oldDirX = data->r.dirX;
         data->r.dirX = data->r.dirX * cos(-ROT_SPEED) - data->r.dirY * sin(-ROT_SPEED);
@@ -80,22 +80,46 @@ int handle_keypress(int keycode, t_data *data)
 
 void init_mlx(t_data *data)
 {
-	data->mlx = mlx_init();
-	data->r.dirX = -1;
-	data->r.dirY = 0;
-	data->r.planeX = 0;
-	data->r.planeY = 0.66;
-	data->r.fov = 0.66;
+    data->mlx = mlx_init();
+    if (data ->p.dir == 'N')
+    {
+        data->r.dirX = -1;
+        data->r.dirY = 0;
+        data->r.planeX = 0;
+        data->r.planeY = 0.66;
+    }
+    else if (data->p.dir == 'S')
+    {
+        data->r.dirX = 1;
+        data->r.dirY = 0;
+        data->r.planeX = 0;
+        data->r.planeY = -0.66;
+    }
+    else if (data->p.dir == 'E')
+    {
+        data->r.dirX = 0;
+        data->r.dirY = 1;
+        data->r.planeX = 0.66;
+        data->r.planeY = 0;
+    }
+    else if (data->p.dir == 'W')
+    {
+        data->r.dirX = 0;
+        data->r.dirY = -1;
+        data->r.planeX = -0.66;
+        data->r.planeY = 0;
+    }
+    data->r.fov = 0.66;
 }
 
 void start_mlx(t_data *data)
 {
     // Initialisation de MLX
-	init_mlx(data);
-	get_images(data);
+    init_mlx(data);
+    get_images(data);
     data->mlx_win = mlx_new_window(data->mlx, 1280, 1024, "Cub3d");
     mlx_hook(data->mlx_win, 17, 0, ft_close, data);
-    mlx_hook(data->mlx_win, 2, 1L<<0, handle_keypress, data);
+    mlx_hook(data->mlx_win, 2, 1L << 0, handle_keypress, data);
     mlx_loop_hook(data->mlx, game_loop, data);
 
     // Boucle MLX
