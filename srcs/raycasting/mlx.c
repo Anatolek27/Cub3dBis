@@ -91,8 +91,8 @@ void init_mlx(t_data *data)
 void start_mlx(t_data *data)
 {
     // Initialisation de MLX
-	get_images(data);
 	init_mlx(data);
+	get_images(data);
     data->mlx_win = mlx_new_window(data->mlx, 1280, 1024, "Cub3d");
     mlx_hook(data->mlx_win, 17, 0, ft_close, data);
     mlx_hook(data->mlx_win, 2, 1L<<0, handle_keypress, data);
