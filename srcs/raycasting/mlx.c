@@ -83,8 +83,8 @@ void init_mlx(t_data *data)
 	data->mlx = mlx_init();
 	data->r.dirX = -1;
 	data->r.dirY = 0;
-	data->r.planeX = -0.66;
-	data->r.planeY = 0;
+	data->r.planeX = 0;
+	data->r.planeY = 0.66;
 	data->r.fov = 0.66;
 }
 

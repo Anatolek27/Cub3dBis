@@ -6,7 +6,7 @@
 /*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 02:02:24 by akunegel          #+#    #+#             */
-/*   Updated: 2024/09/19 23:51:46 by akunegel         ###   ########.fr       */
+/*   Updated: 2024/09/20 18:09:42 by akunegel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,22 @@ typedef struct s_player
 	char	dir;
 }				t_player;
 
+typedef struct s_texture
+{
+    void    *img;
+    char    *addr;
+    int     bits_per_pixel;
+    int     line_length;
+    int     endian;
+    int     width;
+    int     height;
+} t_texture;
+
 typedef struct s_i {
-	void *no;
-	void *so;
-	void *we;
-	void *ea;
+	t_texture no;
+	t_texture so;
+	t_texture we;
+	t_texture ea;
 }		t_i;
 
 typedef struct s_images {
