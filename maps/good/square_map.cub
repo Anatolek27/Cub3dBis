@@ -1,14 +1,16 @@
-   WE                            textures/wolfenstein/eagle.xpm
-NO      textures/wolfenstein/grey_stone.xpm
-
-
-
-SO textures/wolfenstein/red_brick.xpm
 
 F   69,222,199
 
-EA textures/wolfenstein/mossy.xpm
+NO ./xpm/pathNO.xpm
 
+
+
+         SO ./xpm/pathSO.xpm
+WE ./xpm/pathWE.xpm
+
+
+
+EA ./xpm/pathEA.xpm
 
 
 C 235,198,52
