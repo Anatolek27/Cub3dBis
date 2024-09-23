@@ -6,7 +6,7 @@
 /*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 01:41:56 by akunegel          #+#    #+#             */
-/*   Updated: 2024/09/20 19:26:48 by akunegel         ###   ########.fr       */
+/*   Updated: 2024/09/23 00:34:05 by akunegel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,11 +101,8 @@ int	*convert_rgb(char *d, t_data *data)
 		i++;
 	if (i != 3)
 	{
-		i = 0;
-		while (tmp[i])
-			free(tmp[i++]);
-		free(tmp);
-		exit (ft_exit(data, "Error: RGB format not respected"));
+		free_tmp_int(tmp);
+		exit(ft_exit(data, "Error: RGB format not respected"));
 	}
 	rgb = malloc(sizeof(int) * 3);
 	i = 0;

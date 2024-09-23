@@ -1,8 +1,8 @@
 F 220,100,0
-NO ./pathNO.xpm
-SO ./pathSO.xpm
-WE ./pathWE.xpm
-EA ./pathEA.xpm
+NO ./xpm/pathNO.xpm
+SO ./xpm/pathSO.xpm
+WE ./xpm/pathWE.xpm
+EA ./xpm/pathEA.xpm
 C 225,30,0
 
 

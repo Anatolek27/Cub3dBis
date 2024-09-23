@@ -6,7 +6,7 @@
 /*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 01:58:30 by akunegel          #+#    #+#             */
-/*   Updated: 2024/09/19 18:51:21 by akunegel         ###   ########.fr       */
+/*   Updated: 2024/09/23 01:04:42 by akunegel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	clean_paths(t_data *data)
 int	main(int argc, char **argv)
 {
 	t_data	data;
-	
+
 	data.bool = 0;
 	data.map.map = NULL;
 	clean_paths(&data);

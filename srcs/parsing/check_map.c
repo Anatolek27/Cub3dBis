@@ -6,7 +6,7 @@
 /*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 01:41:49 by akunegel          #+#    #+#             */
-/*   Updated: 2024/09/13 01:41:50 by akunegel         ###   ########.fr       */
+/*   Updated: 2024/09/23 00:41:41 by akunegel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,15 +82,12 @@ void	check_map_chars(t_data *data, int i)
 			else if ((data->map.map[i][j] == 'N' || data->map.map[i][j] == 'S'
 				|| data->map.map[i][j] == 'W' || data->map.map[i][j] == 'E')
 				&& data->p.x == -1)
-			{
-				data->p.dir = data->map.map[i][j];
-				data->map.map[i][j++] = '0';
-				data->p.x = i;
-				data->p.y = j - 1;
-			}
+				check_map_chars_extended(data, i, j);
 			else
 				exit(ft_exit(data, "Error: Wrong map format"));
 		}
 		i++;
 	}
+	if (data->p.x == -1)
+		exit(ft_exit(data, "Error: Player missing"));
 }

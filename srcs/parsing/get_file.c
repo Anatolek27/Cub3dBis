@@ -6,7 +6,7 @@
 /*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 01:43:15 by akunegel          #+#    #+#             */
-/*   Updated: 2024/09/19 00:45:59 by akunegel         ###   ########.fr       */
+/*   Updated: 2024/09/23 00:47:14 by akunegel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,9 @@ void	get_clean_file(t_data *data)
 {
 	int	i;
 	int	j;
-	int	k;
 
 	i = 0;
 	j = 0;
-	k = 0;
 	remove_empty_lines(data);
 	while (data->file[i])
 	{
@@ -89,13 +87,7 @@ void	get_clean_file(t_data *data)
 			i++;
 		else
 		{
-			k = 0;
-			while (data->file[i][k] || data->file[i][k])
-			{
-				data->tmp[j][k] = data->file[i][k];
-				k++;
-			}
-			data->tmp[j][k] = '\0';
+			cpy_tmp_file(data, i, j);
 			j++;
 			i++;
 		}
