@@ -22,9 +22,6 @@
 
 # define MOVE_SPEED 0.1
 # define ROT_SPEED 0.05
-# define GREEN 0x008000;
-# define BLACKK 0x000000;
-# define WHITE 0xFFFFFF;
 
 typedef struct s_raycasting
 {

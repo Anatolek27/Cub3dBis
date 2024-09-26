@@ -16,8 +16,9 @@ int	get_color_from_texture(t_texture *texture, int x, int y)
 {
 	char	*pixel;
 
-	pixel = texture->addr + (y * texture->line_length + x
-			* (texture->bits_per_pixel / 8));
+	if ((x < 1024 || x >= 0) && (y < 1280 || y >= 0))
+		pixel = texture->addr + (y * texture->line_length + x
+				* (texture->bits_per_pixel / 8));
 	return (*(unsigned int *)pixel);
 }
 

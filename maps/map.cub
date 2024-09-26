@@ -2,9 +2,10 @@ F 220,100,0
 NO ./xpm/pathNO.xpm
 SO ./xpm/pathSO.xpm
 WE ./xpm/pathWE.xpm
-EA ./xpm/pathEA.xpm
+C 225,30,0
 C 225,30,0
 
+EA ./xpm/pathEA.xpm
 
 1111111111111111111111111
 1000000000000000000000001

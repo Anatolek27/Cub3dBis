@@ -14,15 +14,18 @@
 
 void	extract_frgb(t_data *data, char *line, int i, int c)
 {
-	data->paths.pf = malloc(sizeof(char) * (c + 1));
-	c = 0;
-	while (line[i])
+	if (!data->paths.pf)
 	{
-		data->paths.pf[c] = line[i];
-		c++;
-		i++;
+		data->paths.pf = malloc(sizeof(char) * (c + 1));
+		c = 0;
+		while (line[i])
+		{
+			data->paths.pf[c] = line[i];
+			c++;
+			i++;
+		}
+		data->paths.pf[c] = '\0';
 	}
-	data->paths.pf[c] = '\0';
 }
 
 void	extract_rgb(t_data *data, char pre, char *line, int i)
@@ -35,7 +38,7 @@ void	extract_rgb(t_data *data, char pre, char *line, int i)
 		i++;
 	while (line[i + c])
 		c++;
-	if (pre == 'C')
+	if (pre == 'C' && !data->paths.pc)
 	{
 		data->paths.pc = malloc(sizeof(char) * (c + 1));
 		c = 0;
